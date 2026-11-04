@@ -222,3 +222,13 @@ __marimo__/
 # Generated ETL exports
 data/*.csv
 data/*.xlsx
+
+# Local explanatory notes; keep implementation docs out of the public repository.
+/docs/
+
+# Local IDE and environment files
+.vscode/
+.idea/
+.env.*
+!.env.example
+*.log

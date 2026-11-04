@@ -41,7 +41,7 @@ scraper and pipeline. Both produce the same CSV and Excel exports.
   summary metrics, and download buttons.
 - **REST API** for programmatic ETL job execution.
 - **Containerized deployment** with Docker and Docker Compose.
-- **CI validation** for Python syntax and scraper execution on GitHub Actions.
+- **Automated validation** with syntax checks and deterministic tests in GitHub Actions.
 
 ## Tech Stack
 
@@ -83,17 +83,28 @@ dashboard is available at `http://localhost:8501`. Use the dashboard or API to
 start an extraction; exports are written to `data/latest_scrape.csv` and
 `data/latest_scrape.xlsx`.
 
+Run only the dashboard if you do not need the API; it executes the scraper
+directly and does not require Uvicorn.
+
 ### Docker Compose
 
 Build and start both services:
 
 ```bash
-docker-compose up --build
+docker compose up --build
 ```
 
 Open the dashboard at `http://localhost:8501` and the API at
 `http://localhost:8000`. Compose shares a named data volume between the
 services so generated exports persist and are visible to both containers.
+
+### Tests
+
+Run the deterministic test suite from the repository root:
+
+```powershell
+python -m unittest discover -s tests -v
+```
 
 ## API Reference
 
